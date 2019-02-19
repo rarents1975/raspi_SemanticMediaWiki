@@ -50,6 +50,13 @@ mysql> USE wiki;
 ```
 CREATE USER 'wiki'@'localhost' IDENTIFIED BY 'password';
 ```
-
-
+example:
+```
+CREATE USER 'wiki'@'localhost' IDENTIFIED BY 'tibet2000';
+```
+```
+GRANT ALL PRIVILEGES ON wiki.* TO 'wiki'@'localhost';
+FLUSH PRIVILEGES;
+quit
+```
 
