@@ -7,17 +7,19 @@ Installation Description for Sematic Media Wiki on Raspberry Pi
 - Raspberry Pi Model 3 or higher
 - Rapbian Jessy
 
-## Create needed folders on the Ubuntu server
-**Create folder for video recordings:**  
+## Install Media Wiki
+**Get and unpack the Media Wiki:**  
 ```
 cd
-mkdir /Downloads
+cd Downloads
 wget https://releases.wikimedia.org/mediawiki/1.30/mediawiki-1.30.0.tar.gz
+tar -xvzf mediawiki-1.30.0.tar.gz
 ```
 
-**Make user www-data and group www-data owner of the folder:**  
+**Install base packages required for installation:**  
 ```
-sudo chown www-data:www-data /video_recordings/mbrdi
+sudo apt-get install apache2 mysql-server php php-mysql libapache2-mod-php php-xml php-mbstring
+sudo apt-get install php-apc imagemagick
 ```
 
 **Create folder for php and html files:**  
