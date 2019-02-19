@@ -31,6 +31,7 @@ sudo ln -s /var/lib/mediawiki mediawiki
 sudo apt-get install apache2 mysql-server php php-mysql libapache2-mod-php php-xml php-mbstring
 sudo apt-get install php7.0-apcu -y
 sudo apt-get install php-intl
+sudo apt-get install php7.0-gd
 sudo apt-get install imagemagick
 ```
 
@@ -133,9 +134,35 @@ Run the following "initialization" command from the base directory of your Media
 cd /var/www/html/mediawiki
 composer require mediawiki/semantic-media-wiki "~3.0" --update-no-dev
 ```
+Run the setup script from the base directory of your MediaWiki installation:
+```
+cd /var/www/html/mediawiki
+php maintenance/update.php
+```
+Add --skip-external-dependencies to the call of the setup script if you get an error message similar to the following one:
+```
+mediawiki/semantic-media-wiki: 2.5.0 installed, ~2.5 required.
+```
+```
+cd /var/www/html/mediawiki
+php maintenance/update.php --skip-external-dependencies
+```
 
+**Enable Semantic MediaWiki:**
+Add a call to enableSemantics() to the end of the "LocalSettings.php" file. enableSemantics() takes in the domain name of the wiki; a wiki located at "example.org", for instance, should have the following call:
+```
+enableSemantics( 'example.org' );
+```
 
+```
+cd /var/html/www/mediawiki
+sudo nano LocalSettings.php
+```
 
+At the end of the file add:
+```
+enableSemantics( 'servername.org' );
+```
 
 
 
