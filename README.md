@@ -97,8 +97,23 @@ ON the page where it asks for a name for the wiki, you can name the wiki whateve
 
 When you are on the last screen, click on ‘Continue’ and then leave it until another page loads asking to download the file named ‘LocalSettings.php’ save this file somewhere you can access it.
 
-You will now need to get this file onto your PI3.
+You will now save the LocalSettings.php file on /var/www/html/mediawiki
+Easiest is to download the file on your Win PC, open it and past it into the terminal of the Raspi:
+```
+sudo nano /var/www/html/mediawiki/LocalSettings.php
+```
 
+## Install Semantic Media Wiki extension
+**Install Composer:**  
+```
+cd
+mkdir composer
+cd composer
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '48e3236262b34d30969dca3c37281b3b4bbe3221bda826ac6a9a62d6444cdb0dcd0615698a5cbe587c3f0fe57a54d8f5') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php --filename=composer
+sudo mv composer /usr/local/bin/composer
+```
 
 
 
