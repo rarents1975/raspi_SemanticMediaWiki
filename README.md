@@ -115,9 +115,24 @@ php composer-setup.php --filename=composer
 sudo mv composer /usr/local/bin/composer
 ```
 
-
-
-
+**Create composer config file to install Semantic Media Wiki extension**
+```
+cd /home/pi/composer
+nano composer.local.json
+```
+Paste the following configuration into the json file:
+```
+{
+    "require": {
+        "mediawiki/semantic-media-wiki": "~3.0"
+    }
+}
+```
+Run the following "initialization" command from the base directory of your MediaWiki installation:
+```
+cd /var/www/html/mediawiki
+composer require mediawiki/semantic-media-wiki "~3.0" --update-no-dev
+```
 
 
 
