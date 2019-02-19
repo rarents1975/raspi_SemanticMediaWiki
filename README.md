@@ -132,7 +132,7 @@ Paste the following configuration into the json file:
 Run the following "initialization" command from the base directory of your MediaWiki installation:
 ```
 cd /var/www/html/mediawiki
-composer require mediawiki/semantic-media-wiki "~3.0" --update-no-dev
+sudo composer require mediawiki/semantic-media-wiki "~3.0" --update-no-dev
 ```
 Run the setup script from the base directory of your MediaWiki installation:
 ```
@@ -141,7 +141,7 @@ php maintenance/update.php
 ```
 Add --skip-external-dependencies to the call of the setup script if you get an error message similar to the following one:
 ```
-mediawiki/semantic-media-wiki: 2.5.0 installed, ~2.5 required.
+Error: your composer.lock file is not up to date. Run "composer update --no-dev" to install newer dependencies
 ```
 ```
 cd /var/www/html/mediawiki
@@ -163,6 +163,18 @@ At the end of the file add:
 ```
 enableSemantics( 'servername.org' );
 ```
+
+Goto your browser and refresh the homepage of Media Wiki: http://ip_address_of_pi3/mediawiki
+
+An error will appear. Go back to the unix shell and execute the update script again:
+
+```
+cd /var/html/www/mediawiki
+php maintenance/update.php --skip-external-dependencies
+```
+
+Goto your browser and refresh the homepage of Media Wiki: http://ip_address_of_pi3/mediawiki
+If on the lower right corner the Sematic Media Wiki logo will appear, your installation most probably was successful. 
 
 
 
