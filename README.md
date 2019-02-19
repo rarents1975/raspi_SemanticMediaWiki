@@ -29,7 +29,31 @@ sudo ln -s /var/lib/mediawiki mediawiki
 **Install base packages required for installation:**  
 ```
 sudo apt-get install apache2 mysql-server php php-mysql libapache2-mod-php php-xml php-mbstring
+sudo apt-get install php7.0-apcu -y
+sudo apt-get install php-intl
 sudo apt-get install imagemagick
+```
+
+To ensure that APC-Cache is enabled, edit /etc/php/7.0/apache2/php.ini and change:
+
+```
+sudo nano /etc/php/7.0/apache2/php.ini
+```
+Change
+```
+;opcache.enable=0
+```
+to
+```
+;opcache.enable=1
+```
+Next, make sure the php mod is enabled:
+```
+phpenmod opcache
+```
+Finally restart Apache:
+```
+sudo service apache2 restart
 ```
 
 **Configuration of MySQL:**  
