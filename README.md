@@ -148,7 +148,7 @@ cd /var/www/html/mediawiki
 php maintenance/update.php --skip-external-dependencies
 ```
 
-**Enable Semantic MediaWiki:**
+**Enable Semantic MediaWiki:**  
 Add a call to enableSemantics() to the end of the "LocalSettings.php" file. enableSemantics() takes in the domain name of the wiki; a wiki located at "example.org", for instance, should have the following call:
 ```
 enableSemantics( 'example.org' );
