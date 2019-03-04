@@ -176,5 +176,16 @@ php maintenance/update.php --skip-external-dependencies
 Goto your browser and refresh the homepage of Media Wiki: http://ip_address_of_pi3/mediawiki
 If on the lower right corner the Sematic Media Wiki logo will appear, your installation most probably was successful. 
 
+## Install and configure Apache Jena Fuseki (RDF Triple Store)
+**Install CApache Jena Fuseki:**  
+```
+sudo adduser --disabled-password fuseki
+cd /home/fuseki
+sudo -u fuseki bash
+wget http://mirrors.ae-online.de/apache/jena/binaries/apache-jena-fuseki-2.4.1.tar.gz
+tar xzf apache-jena-fuseki-2.4.1.tar.gz
+ln -s apache-jena-fuseki-2.4.1 fuseki
+cd fuseki
+```
 
-
+Fuseki will in `/home/fuseki/fuseki`. Call `./fuseki-server` for testing.
