@@ -189,3 +189,15 @@ cd fuseki
 ```
 
 Fuseki will in `/home/fuseki/fuseki`. Call `./fuseki-server` for testing.
+
+**Setup Fuseki as service**  
+```
+sudo vim /etc/default/fuseki # edit file
+cat /etc/default/fuseki
+FUSEKI_HOME=/home/fuseki/fuseki
+FUSEKI_BASE=/etc/fuseki
+sudo mkdir /etc/fuseki
+sudo chown fuseki /etc/fuseki
+sudo cp /home/fuseki/fuseki/fuseki /etc/init.d/
+sudo update-rc.d fuseki defaults
+```
