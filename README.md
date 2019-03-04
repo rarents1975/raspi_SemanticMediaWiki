@@ -177,7 +177,7 @@ Goto your browser and refresh the homepage of Media Wiki: http://ip_address_of_p
 If on the lower right corner the Sematic Media Wiki logo will appear, your installation most probably was successful. 
 
 ## Install and configure Apache Jena Fuseki (RDF Triple Store)
-**Install CApache Jena Fuseki:**  
+**Install Apache Jena Fuseki:**  
 ```
 sudo adduser --disabled-password fuseki
 cd /home/fuseki
@@ -201,3 +201,7 @@ sudo chown fuseki /etc/fuseki
 sudo cp /home/fuseki/fuseki/fuseki /etc/init.d/
 sudo update-rc.d fuseki defaults
 ```
+
+**Setup Semantic Mediawiki to use with Fuseki**  
+For details how to configure Semantic Media Wiki for Apache Jena Fuseki see also 
+https://www.semantic-mediawiki.org/wiki/Help:SPARQLStore/RepositoryConnector/Fuseki
