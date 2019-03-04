@@ -182,7 +182,7 @@ If on the lower right corner the Sematic Media Wiki logo will appear, your insta
 sudo adduser --disabled-password fuseki
 cd /home/fuseki
 sudo -u fuseki bash
-wget http://mirrors.ae-online.de/apache/jena/binaries/apache-jena-fuseki-2.4.1.tar.gz
+wget http://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-2.6.0.tar.gz
 tar xzf apache-jena-fuseki-2.4.1.tar.gz
 ln -s apache-jena-fuseki-2.4.1 fuseki
 cd fuseki
