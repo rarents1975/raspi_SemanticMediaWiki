@@ -211,6 +211,9 @@ http://yourwebserver/mediawiki/index.php/Special:CreateForm
 
 A form with the headline "Create a form" should appear.
 
+You can get some informations about the PageForms extension here:
+https://www.mediawiki.org/wiki/Extension:Page_Forms/Special_pages
+
 ## Install and configure Apache Jena Fuseki (RDF Triple Store)
 **Install Apache Jena Fuseki:**  
 ```
