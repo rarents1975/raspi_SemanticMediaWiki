@@ -176,6 +176,37 @@ php maintenance/update.php --skip-external-dependencies
 Goto your browser and refresh the homepage of Media Wiki: http://ip_address_of_pi3/mediawiki
 If on the lower right corner the Sematic Media Wiki logo will appear, your installation most probably was successful. 
 
+## Install Extensions
+**Install PageForms Extension:**  
+
+Some general informations howto install extensions can be found here:
+https://www.mediawiki.org/wiki/Manual:Extensions/de#Installieren_einer_Erweiterung
+
+First download extension:  
+Goto Extension Distributor under https://www.mediawiki.org/wiki/Special:ExtensionDistributor 
+and search for PageForms. 
+
+Download the tar archive and unzip it within the extension folder of your media wiki installation:
+```
+cd /var/www/html/mediawiki/extensions
+sudo tar xzf PageForms-REL1_30-3e86843.tar.gz
+```
+Take care that the new folder belongs to user www-data or under whatever user your Apache web server is running.
+
+Then edit LocalSettings.php in the main folder of media wiki.
+
+```
+cd /var/www/html/mediawiki
+sudo nano LocalSettings.php
+```
+
+Add the follwing lines at the end of the php file:
+```
+if ( !$wgCommandLineMode ) {
+   wfLoadExtension ( 'PageForms' );
+}
+```
+
 ## Install and configure Apache Jena Fuseki (RDF Triple Store)
 **Install Apache Jena Fuseki:**  
 ```
