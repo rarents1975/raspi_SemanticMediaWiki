@@ -206,6 +206,10 @@ if ( !$wgCommandLineMode ) {
    wfLoadExtension ( 'PageForms' );
 }
 ```
+Check if everything went on well by loading a form extension:
+http://yourwebserver/mediawiki/index.php/Special:CreateForm
+
+A form with the headline "Create a form" should appear.
 
 ## Install and configure Apache Jena Fuseki (RDF Triple Store)
 **Install Apache Jena Fuseki:**  
