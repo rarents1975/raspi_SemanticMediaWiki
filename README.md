@@ -214,6 +214,48 @@ A form with the headline "Create a form" should appear.
 You can get some informations about the PageForms extension here:
 https://www.mediawiki.org/wiki/Extension:Page_Forms/Special_pages
 
+Create the following 2 scripts:
+`nano /var/www/html/mediawiki/maintenance/runJobs0.sh`
+
+```
+#!/bin/bash
+# will be executed by a cron-job 
+
+MEDIAWIKI=/var/www/html/mediawiki 
+RUNNING=$(ps aux | grep /mediawiki/maintenance/runJobs.php | grep maxjobs) 
+if [ -z $RUNNING ];
+    then su rarents -c "php $MEDIAWIKI/maintenance/runJobs.php --maxjobs=999";
+fi
+```
+
+`nano /var/www/html/mediawiki/maintenance/runJobs1.sh`
+
+```
+#!/bin/bash
+# will be executed by a cron-job
+
+date >> /var/log/httpd/cron
+
+if pgrep -f "php /var/www/html/mediawiki/maintenance/runJobs.php -q --memory-limit=max --wait" > /dev/null
+    then
+        echo "runJobs running." >> /var/log/httpd/cron
+        kill `pgrep -f "php /var/www/html/w/maintenance/runJobs.php -q --memory-limit=max --wait"`
+fi
+
+echo "runJobs stopped. Restarting..." >> /var/log/httpd/cron
+
+php /var/www/html/mediawiki/maintenance/runJobs.php -q --memory-limit=max --wait >> /var/log/httpd/cron 2>&1 &
+```
+Add the following 2 lines to the cronjob:
+
+`sudo crontab -e`
+
+```
+*/15 * * * * /bin/sh /var/www/html/mediawiki/maintenance/runJobs0.sh >> /var/www/html/mediawiki/maintenance/jobs-run-log-smw.txt
+*/15 * * * * /bin/sh /var/www/html/mediawiki/maintenance/runJobs1.sh >> /var/www/html/mediawiki/maintenance/jobs-run-log-smw.txt
+```
+The 2 scripts are needed to ensure, that Schemas and Pages can be created
+
 ## Install and configure Apache Jena Fuseki (RDF Triple Store)
 **Install Apache Jena Fuseki:**  
 ```
